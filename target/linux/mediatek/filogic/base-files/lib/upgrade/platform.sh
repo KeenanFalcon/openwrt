@@ -119,7 +119,8 @@ platform_do_upgrade() {
 	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
-	asus,tuf-ax6000)
+	asus,tuf-ax6000|\
+	asus,zenwifi-bt8)
 		CI_UBIPART="UBI_DEV"
 		CI_KERNPART="linux"
 		nand_do_upgrade "$1"
@@ -244,7 +245,8 @@ platform_pre_upgrade() {
 	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
-	asus,tuf-ax6000)
+	asus,tuf-ax6000|\
+	asus,zenwifi-bt8)
 		asus_initial_setup
 		;;
 	xiaomi,mi-router-ax3000t|\
