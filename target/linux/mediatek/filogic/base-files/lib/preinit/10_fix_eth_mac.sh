@@ -20,6 +20,8 @@ preinit_set_mac_address() {
 		ip link set dev lan3 address "$lan_mac"
 		ip link set dev internet address "$wan_mac"
 		;;
+	asus,rt-ax52|\
+	asus,rt-ax57m|\
 	asus,tuf-ax4200|\
 	asus,tuf-ax6000)
 		CI_UBIPART="UBI_DEV"

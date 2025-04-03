@@ -42,12 +42,14 @@ xiaomi_initial_setup()
 
 	fw_setenv -s - <<-EOF
 		boot_wait on
+		bootdelay 3
+		bootmenu_delay 5
 		uart_en 1
 		flag_boot_rootfs 0
-		flag_last_success 1
+		flag_last_success 0
 		flag_boot_success 1
-		flag_try_sys1_failed 8
-		flag_try_sys2_failed 8
+		flag_try_sys1_failed 0
+		flag_try_sys2_failed 0
 	EOF
 
 	local board=$(board_name)
@@ -114,9 +116,12 @@ platform_do_upgrade() {
 		CI_ROOTPART="rootfs"
 		emmc_do_upgrade "$1"
 		;;
+	asus,rt-ax52|\
+	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
-	asus,tuf-ax6000)
+	asus,tuf-ax6000|\
+	asus,zenwifi-bt8)
 		CI_UBIPART="UBI_DEV"
 		CI_KERNPART="linux"
 		nand_do_upgrade "$1"
@@ -237,9 +242,12 @@ platform_pre_upgrade() {
 	local board=$(board_name)
 
 	case "$board" in
+	asus,rt-ax52|\
+	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
-	asus,tuf-ax6000)
+	asus,tuf-ax6000|\
+	asus,zenwifi-bt8)
 		asus_initial_setup
 		;;
 	xiaomi,mi-router-ax3000t|\
